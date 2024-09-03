@@ -11,11 +11,8 @@ interface ToolCardProps {
 
 const ToolCard = ({ tool }: ToolCardProps) => {
     const { addToBookmark, removeFromBookmark, bookmarkedTools } = useToolsContext()
-    const isBookmarked = bookmarkedTools.some((item) => item.id === tool.id);
-
     const clickHandler = () => {
-
-        if (isBookmarked) {
+        if (tool.bookmarked) {
             removeFromBookmark(tool.id);
         } else {
             addToBookmark(tool.id);
@@ -35,7 +32,7 @@ const ToolCard = ({ tool }: ToolCardProps) => {
                 </Link>
 
                 <button className='hover:bg-slate-100 active:scale-95 transition' onClick={clickHandler}>
-                    {isBookmarked ? <svg
+                    {tool.bookmarked ? <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width={20}
                         height={20}

@@ -361,7 +361,7 @@ const data = [
             "Provide contextual a"
         ],
         "author": "MonkeyLearn",
-        "bookmarked": true
+        "bookmarked": false
     },
     {
         "id": "66",
@@ -1040,7 +1040,7 @@ const data = [
             "Twitter"
         ],
         "author": "Created by Twitter Social Bot LLC",
-        "bookmarked": true
+        "bookmarked": false
     },
     {
         "id": "G1001",
@@ -1135,7 +1135,7 @@ const data = [
             ""
         ],
         "author": "OpenAI",
-        "bookmarked": true
+        "bookmarked": false
     },
     {
         "id": "613",
@@ -1168,7 +1168,7 @@ const data = [
             "Text tr"
         ],
         "author": "OpenAI",
-        "bookmarked": true
+        "bookmarked": false
     },
     {
         "id": "21",
@@ -1240,7 +1240,7 @@ const data = [
             ""
         ],
         "author": "Copilot is a code generation tool developed by GitHub, a software development platform owned by Microsoft.",
-        "bookmarked": true
+        "bookmarked": false
     },
     {
         "id": "2787",
@@ -1470,7 +1470,7 @@ const data = [
             "Image G"
         ],
         "author": "OpenAI",
-        "bookmarked": true
+        "bookmarked": false
     },
     {
         "id": "897",

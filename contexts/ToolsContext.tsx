@@ -44,7 +44,6 @@ export const useToolsContext = () => {
 }
 
 export const ToolsProvider = ({ children }: { children: React.ReactNode }) => {
-    const [bookmarkedToolIds, setBookmarkedToolIds] = useState<(number | string)[]>([]);
     const [tools, setTools] = useState<Tool[]>(data);
 
     // Filters
@@ -61,8 +60,8 @@ export const ToolsProvider = ({ children }: { children: React.ReactNode }) => {
     const search = useDebounce(searchTerm, 500);
 
     const bookmarkedTools = useMemo(() => {
-        return tools.filter(tool => bookmarkedToolIds.includes(tool.id));
-    }, [bookmarkedToolIds, tools])
+        return tools.filter(tool => tool.bookmarked);
+    }, [tools])
 
     const filteredTools = useMemo(() => {
         const filteredTools = tools;
@@ -131,11 +130,13 @@ export const ToolsProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     const addToBookmark = (id: number | string) => {
-        setBookmarkedToolIds([...bookmarkedToolIds, id]);
+        const index = tools.findIndex(tool => tool.id === id);
+        setTools(tools.map((tool, i) => i === index ? { ...tool, bookmarked: true } : tool));
     }
 
     const removeFromBookmark = (id: number | string) => {
-        setBookmarkedToolIds(bookmarkedToolIds.filter((toolId) => toolId !== id));
+        const index = tools.findIndex(tool => tool.id === id);
+        setTools(tools.map((tool, i) => i === index ? { ...tool, bookmarked: false } : tool));
     }
 
     return (
