@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Tool from '@/types/tool';
 import { useToolsContext } from '@/contexts/ToolsContext';
+import { useSession } from 'next-auth/react';
 
 // Default image if no image is provided
 const defaultImage = 'https://ebsedu.org/wp-content/uploads/elementor/thumbs/AI-Artificial-Intelligence-What-it-is-and-why-it-matters-qb1o8gpaeu2d4z5h27m45d99w1tmlkjwinh4wq1izi.jpg';
@@ -10,8 +11,14 @@ interface ToolCardProps {
 }
 
 const ToolCard = ({ tool }: ToolCardProps) => {
+    const session = useSession()
     const { addToBookmark, removeFromBookmark, bookmarkedTools } = useToolsContext()
     const clickHandler = () => {
+        if (!session.data) {
+            alert('Please login first')
+            return
+        }
+
         if (tool.bookmarked) {
             removeFromBookmark(tool.id);
         } else {
